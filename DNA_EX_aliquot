@@ -36,7 +36,7 @@ def run(protocol=protocol_api.ProtocolContext):
 
 
 
-
+# defining different labware
     rack = 'calpoly_15_wellplate_1500ul'
 
     well96 = 'corning_96_wellplate_360ul_flat'
@@ -47,7 +47,7 @@ def run(protocol=protocol_api.ProtocolContext):
 
 
 
-
+# describing location of labware
     sample_holder_1 = protocol.load_labware(rack, 1)
 
     sample_holder_4 = protocol.load_labware(rack, 4)
@@ -65,7 +65,7 @@ def run(protocol=protocol_api.ProtocolContext):
     
     tiprack = protocol.load_labware(tiprack, 2)
     
-    
+# destination plates
     96pcr_sample_holder_1 = protocol.load_labware(pcr96, 9)
     
     96pcr_sample_holder_2 = protocol.load_labware(pcr96, 6)
@@ -73,8 +73,35 @@ def run(protocol=protocol_api.ProtocolContext):
     96corning_saple_holder = protocol.load_labware(well96, 3)
     
     
+# load instrument
+
+    p300 = protocol.load_instrument('p300_single_gen2', 'left', tip_racks=[tiperack])
+    
+  
+# defining sample plate values and desination values
+
+    sample_plate_values = ['A1', 'A2', 'A3', 'A4', 'A5',
+
+                           'B1', 'B2', 'B3', 'B4', 'B5',
+
+                           'C1', 'C2', 'C3', 'C4', 'C5']
+                           
+                           
+
+                           
+                           
+    
+# Begin commands - 62.5 ul of DNA extractions from sample_holder_1 then 30ul, 30ul, and 2.5ul respectively into 96pcr_sample_holder_1,  96pcr_sample_holder_2, 96corning_saple_holder
     
     
     
-    
-    
+    p300.pipette.pick_up_tip(tiprack['A1'])
+
+
+
+
+
+
+
+
+
