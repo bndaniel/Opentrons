@@ -2,6 +2,79 @@
 
 #description: 100ul total volume DNA extractions in 1.5ml tubes need to be aliquoted into 2 different 96 well PCR plates and 2.5ul into a 96 well clear flat corning plate. 30ul into each in same order as tubes. 
 
-
 #WORKING DRAFT
 
+from opentrons import protocol_api
+
+
+
+metadata = {
+
+    'apiLevel': '2.13',
+
+    'protocolName': 'DNA_aliquots',
+
+    'author': 'Ben Daniels, Jordan Reichhardt'}
+
+
+# importing custom 15 1.5ml tube rack 
+import json
+
+import opentrons.execute
+
+protocol = opentrons.execute.get_protocol_api()
+
+with open('calpoly_15_wellplate_1500ul.json') as labware_file:
+    labware_def = json.load(labware_file)
+    well_plate = protocol.load_labware_from_definition(labware_def, 1)
+
+
+
+
+
+def run(protocol=protocol_api.ProtocolContext):
+
+
+
+
+    rack = 'calpoly_15_wellplate_1500ul'
+
+    well96 = 'corning_96_wellplate_360ul_flat'
+
+    tiprack = 'opentrons_96_tiprack_300ul'
+    
+    pcr96 = 'nest_96_wellplate_100ul_pcr_full_skirt'
+
+
+
+
+    sample_holder_1 = protocol.load_labware(rack, 1)
+
+    sample_holder_4 = protocol.load_labware(rack, 4)
+
+    sample_holder_7 = protocol.load_labware(rack, 7)
+
+    sample_holder_10 = protocol.load_labware(rack, 10)
+
+    sample_holder_5 = protocol.load_labware(rack, 5)
+
+    sample_holder_8 = protocol.load_labware(rack, 8)
+
+    sample_holder_11 = protocol.load_labware(rack, 11)
+    
+    
+    tiprack = protocol.load_labware(tiprack, 2)
+    
+    
+    96pcr_sample_holder_1 = protocol.load_labware(pcr96, 9)
+    
+    96pcr_sample_holder_2 = protocol.load_labware(pcr96, 6)
+    
+    96corning_saple_holder = protocol.load_labware(well96, 3)
+    
+    
+    
+    
+    
+    
+    
