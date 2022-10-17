@@ -142,7 +142,7 @@ for well in range(96):
   if well_num > 14:
     well_num = 0
     well_plate_num += 1
-  
+ 
   #pick up tip and apirate
   #what is our sample_holder_10_equivelant?
   p300.pick_up_tip()
