@@ -48,19 +48,19 @@ def run(protocol=protocol_api.ProtocolContext):
 
 
 # describing location of labware
-    sample_holder_1 = protocol.load_labware(rack, 1)
+    sample_holder_4 = protocol.load_labware(rack, 1)
 
-    sample_holder_4 = protocol.load_labware(rack, 4)
+    sample_holder_3 = protocol.load_labware(rack, 4)
 
-    sample_holder_7 = protocol.load_labware(rack, 7)
+    sample_holder_2 = protocol.load_labware(rack, 7)
 
-    sample_holder_10 = protocol.load_labware(rack, 10)
+    sample_holder_0 = protocol.load_labware(rack, 10)
 
-    sample_holder_5 = protocol.load_labware(rack, 5)
+    sample_holder_7 = protocol.load_labware(rack, 5)
 
-    sample_holder_8 = protocol.load_labware(rack, 8)
+    sample_holder_6 = protocol.load_labware(rack, 8)
 
-    sample_holder_11 = protocol.load_labware(rack, 11)
+    sample_holder_5 = protocol.load_labware(rack, 11)
     
     
     tiprack = protocol.load_labware(tiprack, 2)
