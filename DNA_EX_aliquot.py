@@ -1,0 +1,207 @@
+#DNA extractions aliquot protocol 
+
+#description: 100ul total volume DNA extractions in 1.5ml tubes need to be aliquoted into 2 different 96 well PCR plates and 2.5ul into a 96 well clear flat corning plate. 30ul into each in same order as tubes. 
+
+#WORKING DRAFT
+
+from opentrons import protocol_api
+
+
+
+metadata = {
+
+    'apiLevel': '2.13',
+
+    'protocolName': 'DNA_aliquots',
+
+    'author': 'Ben Daniels, Jordan Reichhardt'}
+
+
+# importing custom 15 1.5ml tube rack 
+import json
+
+import opentrons.execute
+
+def run(protocol=protocol_api.ProtocolContext):
+    
+    with open('calpoly_15_wellplate_1500ul.json') as labware_file:
+        labware_def = json.load(labware_file)
+        well_plate = protocol.load_labware_from_definition(labware_def, 1)
+
+
+
+
+# defining different labware
+    rack = 'calpoly_15_wellplate_1500ul'
+
+    well96 = 'corning_96_wellplate_360ul_flat'
+
+    tiprack = 'opentrons_96_tiprack_300ul'
+    
+    pcr96 = 'nest_96_wellplate_100ul_pcr_full_skirt'
+
+
+
+# describing location of labware
+    sample_holder_3 = protocol.load_labware(rack, 1)
+
+    sample_holder_2 = protocol.load_labware(rack, 4)
+
+    sample_holder_1 = protocol.load_labware(rack, 7)
+
+    sample_holder_0 = protocol.load_labware(rack, 10)
+
+    sample_holder_6 = protocol.load_labware(rack, 5)
+
+    sample_holder_5 = protocol.load_labware(rack, 8)
+
+    sample_holder_4 = protocol.load_labware(rack, 11)
+    
+    
+    tiprack = protocol.load_labware(tiprack, 2)
+    
+# destination plates
+    pcr_sample_holder_1 = protocol.load_labware(pcr96, 9)
+    
+    pcr_sample_holder_2 = protocol.load_labware(pcr96, 6)
+    
+    corning_saple_holder = protocol.load_labware(well96, 3)
+    
+    
+# load instrument
+
+    p300 = protocol.load_instrument('p300_single_gen2', 'left', tip_racks=[tiperack])
+    
+  
+# defining sample plate values and desination values
+
+    sample_plate_values = ['A1', 'A2', 'A3', 'A4', 'A5',
+
+                           'B1', 'B2', 'B3', 'B4', 'B5',
+
+                           'C1', 'C2', 'C3', 'C4', 'C5']
+                           
+                           
+    dest_plate_0 = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A12',
+  
+                    'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'B11', 'B12',
+                  
+                    'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10', 'C11', 'C12',
+                  
+                    'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10', 'D11', 'D12',
+                  
+                    'E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E8', 'E9', 'E10', 'E11', 'E12',
+                  
+                    'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12',
+                  
+                    'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11', 'G12',
+                  
+                    'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10', 'H11', 'H12']
+                  
+                  
+    dest_plate_1 = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A12',
+  
+                    'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'B11', 'B12',
+                  
+                    'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10', 'C11', 'C12',
+                  
+                    'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10', 'D11', 'D12',
+                  
+                    'E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E8', 'E9', 'E10', 'E11', 'E12',
+                  
+                    'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12',
+                  
+                    'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11', 'G12',
+                  
+                    'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10', 'H11', 'H12']
+                  
+                  
+    dest_plate_2 = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A12',
+  
+                    'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8', 'B9', 'B10', 'B11', 'B12',
+                  
+                    'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10', 'C11', 'C12',
+                  
+                    'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10', 'D11', 'D12',
+                  
+                    'E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E8', 'E9', 'E10', 'E11', 'E12',
+                  
+                    'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12',
+                  
+                    'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10', 'G11', 'G12',
+                  
+                    'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10', 'H11', 'H12']
+
+    p300.pipette.pick_up_tip(tiprack['A1'])
+
+# Begin commands - 62.5 ul of DNA extractions from sample_holder_1 then 30ul, 30ul, and 2.5ul respectively into 96pcr_sample_holder_1,  96pcr_sample_holder_2, 96corning_saple_holder
+
+    tip_num = 0
+    well_num = 0
+    well_plate_num = 0
+    dest_0_val = 0
+    dest_1_val = 0
+    dest_2_val = 0
+
+#ittereate over each well in sample_plate_values
+    for well in range(96):
+  
+  #update what plate in sample_plate_values we are on
+  # second pass to aspirate?
+        if well_num > 14:
+            well_num = 0
+            well_plate_num += 1
+    
+        if well_plate_num == 0:
+            sample_hold_val = sample_holder_0 
+        if well_plate_num == 1:
+            sample_hold_val = sample_holder_1
+        if well_plate_num == 2:
+            sample_hold_val = sample_holder_2
+        if well_plate_num == 3:
+            sample_hold_val = sample_holder_3
+        if well_plate_num == 4:
+            sample_hold_val = sample_holder_4
+        if well_plate_num == 5:
+            sample_hold_val = sample_holder_5
+        if well_plate_num == 6:
+            sample_hold_val = sample_holder_6
+ 
+  #pick up tip and apirate
+  #what is our sample_holder_10_equivelant?
+        p300.pick_up_tip()
+        tip_num += 1
+        p300.aspirate(62.5, sample_hold_val[sample_plate_values[well_num]])
+        well_num += 1
+  
+  #dispense in all three of destination plates
+  #what is our pool of five plate equivelant?
+        p300.dispense(30, pool_of_five_plate[dest_plate_0[dest_0_val]])
+        dest_0_val += 1
+        p300.dispense(30, pool_of_five_plate[dest_plate_1[dest_1_val]])
+        dest_1_val += 1
+        p300.dispense(2.5, pool_of_five_plate[dest_plate_2[dest_2_val]])
+        dest_2_val += 1
+        p300.drop_tip()
+  
+                           
+                           
+   
+
+
+
+
+
+
+                           
+                           
+
+                           
+                           
+   
+
+
+
+
+
+
