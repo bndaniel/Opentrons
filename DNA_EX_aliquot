@@ -90,15 +90,7 @@ def run(protocol=protocol_api.ProtocolContext):
 
                            
                            
-    
-# Begin commands - 62.5 ul of DNA extractions from sample_holder_1 then 30ul, 30ul, and 2.5ul respectively into 96pcr_sample_holder_1,  96pcr_sample_holder_2, 96corning_saple_holder
-    
-    
-    
-    p300.pipette.pick_up_tip(tiprack['A1'])
-
-
-
+   
 
 
 
