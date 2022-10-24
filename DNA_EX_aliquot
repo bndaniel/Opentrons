@@ -1,8 +1,8 @@
-#DNA extractions aliquot protocol 
+# DNA extractions aliquot protocol
 
-#description: 100ul total volume DNA extractions in 1.5ml tubes need to be aliquoted into 2 different 96 well PCR plates and 2.5ul into a 96 well clear flat corning plate. 30ul into each in same order as tubes. 
+# description: 100ul total volume DNA extractions in 1.5ml tubes need to be aliquoted into 2 different 96 well PCR plates and 2.5ul into a 96 well clear flat corning plate. 30ul into each in same order as tubes.
 
-#WORKING DRAFT
+# WORKING DRAFT
 
 from opentrons import protocol_api
 
@@ -21,13 +21,13 @@ metadata = {
 
 
 def run(protocol=protocol_api.ProtocolContext):
-   with open('calpoly_15_wellplate_1500ul.json') as labware_file:
-       labware_def = json.load(labware_file)
-       well_plate = protocol.load_labware_from_definition(labware_def, 1)
+   # with open('calpoly_15_wellplate_1500ul.json') as labware_file:
+       # labware_def = json.load(labware_file)
+       # well_plate = protocol.load_labware_from_definition(labware_def, 1)
 
     # defining different labware
    #change rack back tot he cal poly 15 well
-    rack = 'calpoly_15_wellplate_1500ul'
+    rack = 'opentrons_15_tuberack_nest_15ml_conical'
 
     well96 = 'corning_96_wellplate_360ul_flat'
 
@@ -135,6 +135,7 @@ def run(protocol=protocol_api.ProtocolContext):
     for well in range(96):
 
         # update what plate in sample_plate_values we are on
+        # second pass to aspirate?
         if well_num > 14:
             well_num = 0
             well_plate_num += 1
@@ -170,28 +171,5 @@ def run(protocol=protocol_api.ProtocolContext):
         p300.dispense(2.5, corning_saple_holder[dest_plate_2[dest_2_val]])
         dest_2_val += 1
         p300.drop_tip()
-
-
-
-  
-                           
-                           
-   
-
-
-
-
-
-
-                           
-                           
-
-                           
-                           
-   
-
-
-
-
 
 
