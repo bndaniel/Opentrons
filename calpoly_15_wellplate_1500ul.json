@@ -1,0 +1,220 @@
+{
+    "ordering": [
+        [
+            "A1",
+            "B1",
+            "C1"
+        ],
+        [
+            "A2",
+            "B2",
+            "C2"
+        ],
+        [
+            "A3",
+            "B3",
+            "C3"
+        ],
+        [
+            "A4",
+            "B4",
+            "C4"
+        ],
+        [
+            "A5",
+            "B5",
+            "C5"
+        ]
+    ],
+    "brand": {
+        "brand": "cal poly",
+        "brandId": []
+    },
+    "metadata": {
+        "displayName": "Cal Poly 15 Well Plate 1500 µL",
+        "displayCategory": "wellPlate",
+        "displayVolumeUnits": "µL",
+        "tags": []
+    },
+    "dimensions": {
+        "xDimension": 127.75,
+        "yDimension": 85.5,
+        "zDimension": 59.5
+    },
+    "wells": {
+        "A1": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 6,
+            "y": 67.55,
+            "z": 20.2
+        },
+        "B1": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 6,
+            "y": 42.55,
+            "z": 20.2
+        },
+        "C1": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 6,
+            "y": 17.55,
+            "z": 20.2
+        },
+        "A2": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 31,
+            "y": 67.55,
+            "z": 20.2
+        },
+        "B2": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 31,
+            "y": 42.55,
+            "z": 20.2
+        },
+        "C2": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 31,
+            "y": 17.55,
+            "z": 20.2
+        },
+        "A3": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 56,
+            "y": 67.55,
+            "z": 20.2
+        },
+        "B3": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 56,
+            "y": 42.55,
+            "z": 20.2
+        },
+        "C3": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 56,
+            "y": 17.55,
+            "z": 20.2
+        },
+        "A4": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 81,
+            "y": 67.55,
+            "z": 20.2
+        },
+        "B4": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 81,
+            "y": 42.55,
+            "z": 20.2
+        },
+        "C4": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 81,
+            "y": 17.55,
+            "z": 20.2
+        },
+        "A5": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 106,
+            "y": 67.55,
+            "z": 20.2
+        },
+        "B5": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 106,
+            "y": 42.55,
+            "z": 20.2
+        },
+        "C5": {
+            "depth": 39.3,
+            "totalLiquidVolume": 1500,
+            "shape": "circular",
+            "diameter": 9,
+            "x": 106,
+            "y": 17.55,
+            "z": 20.2
+        }
+    },
+    "groups": [
+        {
+            "metadata": {
+                "wellBottomShape": "v"
+            },
+            "wells": [
+                "A1",
+                "B1",
+                "C1",
+                "A2",
+                "B2",
+                "C2",
+                "A3",
+                "B3",
+                "C3",
+                "A4",
+                "B4",
+                "C4",
+                "A5",
+                "B5",
+                "C5"
+            ]
+        }
+    ],
+    "parameters": {
+        "format": "irregular",
+        "quirks": [],
+        "isTiprack": false,
+        "isMagneticModuleCompatible": false,
+        "loadName": "calpoly_15_wellplate_1500ul"
+    },
+    "namespace": "custom_beta",
+    "version": 1,
+    "schemaVersion": 2,
+    "cornerOffsetFromSlot": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+    }
+}
